@@ -1,0 +1,43 @@
+if(!isRelease){
+    apply plugin: 'com.android.application'
+}else{
+    apply plugin: 'com.android.library'
+}
+//apply plugin: 'android-aspectjx'
+//apply plugin: 'com.android.library'
+apply from:'../common_dependencies.gradle'
+
+
+android {
+
+    defaultConfig {
+        if(!isRelease)
+            applicationId "com.zxj.web"
+
+
+    }
+
+    sourceSets {
+        main {
+            if(!isRelease){
+                // 如果是组件化模式，需要单独运行时
+                manifest.srcFile 'src/main/debug/AndroidManifest.xml'
+            }else {
+                // 集成化模式，整个项目打包
+                manifest.srcFile 'src/main/AndroidManifest.xml'
+
+                java {
+                    // release 时 debug 目录下文件不需要合并到主工程
+                    exclude '**/debug/**'
+                }
+            }
+        }
+    }
+
+}
+dependencies {
+    implementation project(path: ':common')
+    implementation 'com.github.Justson.AgentWeb:agentweb-core:v5.0.0-alpha.1-androidx'
+    implementation 'com.github.Justson.AgentWeb:agentweb-filechooser:v5.0.0-alpha.1-androidx' // (可选)
+    implementation 'com.github.Justson:Downloader:v5.0.0-androidx'// (可选)
+}

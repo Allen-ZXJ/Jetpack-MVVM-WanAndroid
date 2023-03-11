@@ -1,0 +1,63 @@
+pluginManagement {
+    repositories {
+//        maven {
+//            url 'https://maven.aliyun.com/repository/jcenter'
+              //阿里云的jcenter仓库废弃了
+//        }
+        maven {
+            url 'https://maven.aliyun.com/repository/google'
+        }
+        maven {
+            url 'https://maven.aliyun.com/repository/public'
+        }
+        maven {
+            url 'https://maven.aliyun.com/repository/mapr-public'
+        }
+        maven {
+            url 'https://jitpack.io'
+        }
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+    }
+
+
+}
+
+
+dependencyResolutionManagement {
+    //> Failed to apply plugin 'android-aspectjx'.
+    //   > Build was configured to prefer settings repositories over project repositories but repository 'MavenLocal' was added by plugin 'android-aspectjx'
+//    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)  必须换成这个，否则会报上面这个错
+    repositoriesMode.set(RepositoriesMode.PREFER_SETTINGS)
+    repositories {
+//        maven {
+//            url 'https://maven.aliyun.com/repository/jcenter'
+        //阿里云的jcenter仓库废弃了
+//        }
+        maven {
+            url 'https://maven.aliyun.com/repository/google'
+        }
+        maven {
+            url 'https://maven.aliyun.com/repository/public'
+        }
+        maven {
+            url 'https://maven.aliyun.com/repository/mapr-public'
+        }
+        maven {
+            url 'https://jitpack.io'
+        }
+        google()
+        mavenCentral()
+    }
+}
+rootProject.name = "NewWanAndroid"
+include ':app'
+include ':common'
+include ':mine'
+include ':login'
+include ':library_aop'
+include ':home'
+include ':project'
+include ':navigation'
+include ':web'

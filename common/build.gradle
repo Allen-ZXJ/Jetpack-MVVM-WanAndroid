@@ -1,0 +1,14 @@
+plugins {
+    id 'com.android.library'
+}
+apply from:'../common_dependencies.gradle'
+
+android {
+
+}
+
+dependencies {
+
+
+//    api ('com.tencent:mmkv:1.2.15')
+}
